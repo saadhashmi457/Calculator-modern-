@@ -1,0 +1,98 @@
+
+{% include "header.html" %}
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <img src="/static/images/home.jpeg" alt="pic">
+        <h1>Welcome to the <span>SaadiiCal</span> Calculator Website </h1>
+        <p>This website provides a simple and effective calculator for quick calculations.</p>
+        
+    </section>
+
+
+        <!--About Section -->
+    <section id="about" class="section">
+        <h1>About This Calculator</h1>
+        <p>  Welcome to our <b>Calculator Web App!</b> This application is designed to provide a <b>simple, fast, and accurate</b> way to perform basic arithmetic calculations. Whether you need to add, subtract, multiply, or divide, our calculator makes it easy with a <b>user-friendly interface</b> and a <b>modern design</b>.  Our goal is to create a <b>seamless user experience</b> with a responsive design that works across all devices. Stay tuned for more features and updates in the future! </p>
+    </section>
+
+  <!-- Contact Section -->
+     <section id="contact" class="section">
+       <div class="Contactd">
+         <h1> Contact Us</h1>
+         <p>  Welcome to our <b>Calculator Web App!</b> <br> Feel free to <span>Contact Us</span> to Create a calculator app <br> according to your taste and to get help <br> from us  to get our coding services. <br>  All these services you can check here. <br> <button href="">Services</button>  </p>
+       </div>
+
+          <div class="Contactf">
+            <h2>Contact Us</h2>
+           
+            <form id="contact-form" method="POST" action="{% url "homepage" %}">
+             {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                
+                <button type="submit">Send</button>
+
+{% comment %} 
+ {% if messages %}
+      <div class="space-y-2">
+        {% for message in messages %}
+          <div class="p-3 rounded-lg text-sm font-medium 
+                      {% if message.tags == 'success' %} bg-green-100 text-green-800 border border-green-300 {% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %} {% endcomment %}
+
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="section">
+        <div class="calculator">
+             {% comment %} <h1>Saadi Calculator</h1> {% endcomment %}
+            <div class="display">
+                <input type="text" id="result" disabled>
+            </div>
+            <div class="buttons">
+                <button class="btn clear" onclick="clearScreen()">C</button>
+                <button class="btn operator" onclick="pressKey('/')">/</button>
+                <button class="btn operator" onclick="pressKey('*')">*</button>
+                <button class="btn delete" onclick="deleteLast()">DEL</button>
+
+                <button class="btn" onclick="pressKey('7')">7</button>
+                <button class="btn" onclick="pressKey('8')">8</button>
+                <button class="btn" onclick="pressKey('9')">9</button>
+                <button class="btn operator" onclick="pressKey('-')">-</button>
+
+                <button class="btn" onclick="pressKey('4')">4</button>
+                <button class="btn" onclick="pressKey('5')">5</button>
+                <button class="btn" onclick="pressKey('6')">6</button>
+                <button class="btn operator" onclick="pressKey('+')">+</button>
+
+                <button class="btn" onclick="pressKey('1')">1</button>
+                <button class="btn" onclick="pressKey('2')">2</button>
+                <button class="btn" onclick="pressKey('3')">3</button>
+                <button class="btn equal" onclick="calculateResult()">=</button>
+
+                <button class="btn zero" onclick="pressKey('0')">0</button>
+                <button class="btn" onclick="pressKey('.')">.</button>
+            </div>
+        </div>
+    </section>
+
+    {% include "footer.html" %}
+
+
+
+
